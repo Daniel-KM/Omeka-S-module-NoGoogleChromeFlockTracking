@@ -120,6 +120,7 @@ Copyright
 [here]: https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network
 [EU Cookie Bar]: https://gitlab.com/Daniel-KM/Omeka-S-module-EUCookieBar
 [installing a module]: https://dev.omeka.org/docs/s/user-manual/modules/#installing-modules
+[NoGoogleChromeFlockTracking.zip]: https://gitlab.com/Daniel-KM/Omeka-S-module-NoGoogleChromeFlockTracking/-/releases
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-NoGoogleChromeFlockTracking/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html

@@ -9,6 +9,7 @@ if (!class_exists(\Generic\AbstractModule::class)) {
 }
 
 use Generic\AbstractModule;
+use Laminas\Http\ClientStatic;
 use Omeka\Module\Exception\ModuleCannotInstallException;
 use Omeka\Mvc\Controller\Plugin\Messenger;
 
@@ -21,6 +22,40 @@ class Module extends AbstractModule
         $services = $this->getServiceLocator();
         $messenger = new Messenger();
         $t = $services->get('MvcTranslator');
+
+        $viewHelpers = $services->get('ViewHelperManager');
+        $serverUrl = $viewHelpers->get('serverUrl');
+        $assetUrl = $viewHelpers->get('assetUrl');
+        $url = $assetUrl('css/style.css', 'Omeka', false, false);
+        try {
+            $response = ClientStatic::get($serverUrl($url));
+        } catch (\Exception $e) {
+        }
+        // In some cases, the server cannot get its own url.
+        if (empty($response)) {
+            try {
+                $response = ClientStatic::get('http://localhost' . $url);
+            } catch (\Exception $e) {
+                throw new ModuleCannotInstallException(
+                    $t->translate('The module is unable to check if the current install is flock-secure.') // @translate
+                        . ' ' . $t->translate('See module’s installation documentation.') // @translate
+                );
+            }
+        }
+        $headers = $response->getHeaders();
+        if (empty($headers)) {
+            throw new ModuleCannotInstallException(
+                $t->translate('The module is not able to check if the current install is flock-secure.') // @translate
+                    . ' ' . $t->translate('See module’s installation documentation.') // @translate
+            );
+        }
+
+        $permissionsPolicy = $headers->get('Permissions-Policy');
+        if (!empty($permissionsPolicy)) {
+            $messenger->addNotice('Your site is already configured and let unchanged.'); // @translate
+            $messenger->addNotice('The module can be uninstalled.'); // @translate
+            return;
+        }
 
         $htaccess = OMEKA_PATH . '/.htaccess';
         if (!file_exists($htaccess) || !is_readable($htaccess)) {
