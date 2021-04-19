@@ -16,6 +16,8 @@ Google says, but now this header is required to invite Google to respect the law
 (there will be a small fine in some years). More information to [clean up the web]
 or [in French].
 
+You can check your current browser on [amifloced.org].
+
 This module can be used in conjunction with the module [EU Cookie Bar], that
 warns about the tracking by cookies when Google analytics or Facebook buttons
 are used to steal data of your visitors.
@@ -41,9 +43,9 @@ sudo systemctl restart apache2
 Nginx and other servers are currently not supported. You can find details of
 config for them [here].
 
-Note that header must be added to any response, not only to the Omeka ones: if
-the assets (images, js, css…) are not protected, Google will add (or maybe not)
-the site in the visitor profile anyway.
+Note that the header must be added to any response, not only to the Omeka ones:
+if the assets (images, js, css…) are not protected, Google will add (or maybe
+not) the site in the visitor profile anyway.
 
 
 Installation
@@ -115,6 +117,7 @@ Copyright
 
 [No Google Chrome Flock Tracking]: https://gitlab.com/Daniel-KM/Omeka-S-module-NoGoogleChromeFlockTracking
 [Omeka S]: https://omeka.org/s
+[amifloced.org]: https://amifloced.org
 [clean up the web]: https://cleanuptheweb.org
 [in French]: https://framablog.org/2021/04/20/developpeurs-developpeuses-nettoyez-le-web
 [here]: https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network

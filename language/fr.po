@@ -9,15 +9,32 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-19 00:00+0000\n"
 "PO-Revision-Date: 2021-04-19 00:00+0000\n"
+"Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: Module.php:25
+#: Module.php:40
+msgid "The module is unable to check if the current install is flock-secure."
+msgstr ""
+"Le module n’est pas en mesure de vérifier si l’installation actuelle est "
+"sécurisée contre le profilage Flock."
+
+#: Module.php:41 Module.php:49 Module.php:64 Module.php:71 Module.php:81
+#: Module.php:88
+msgid "See module’s installation documentation."
+msgstr "Consulter la documentation d’installation du module."
+
+#: Module.php:48
+msgid "The module is not able to check if the current install is flock-secure."
+msgstr ""
+"Le module n’est pas en mesure de vérifier si l’installation actuelle est "
+"sécurisée contre le profilage Flock."
+
+#: Module.php:63
 msgid ""
 "It seems this installation doesn’t use the web server Apache: there is no "
 "file \".htaccess\" at the root of Omeka."
@@ -25,17 +42,31 @@ msgstr ""
 "Il semble que cette installation n’utilise pas le serveur web Apache : aucun "
 "fichier \".htaccess\" ne se trouve à la racine d’Omeka."
 
-#: Module.php:26 Module.php:33
-msgid "See module’s installation documentation."
-msgstr "Consulter la documentation d’installation du module."
-
-#: Module.php:32
+#: Module.php:70
 msgid ""
 "The file \".htaccess\" at the root of Omeka is not writeable and cannot be "
 "updated by this module."
 msgstr ""
 "Le fichier \".htaccess\" à la racine d’Omeka n’est pas modifiable et ne peut "
 "pas être mis à jour par ce module."
+
+#: Module.php:80
+msgid ""
+"It seems this installation doesn’t use the web server Apache: command "
+"\"apachectl\" is not available."
+msgstr ""
+"Il semble que cette installation n’utilise pas le serveur web Apache : la "
+"commande \"apachectl\" n’est pas disponible."
+
+#: Module.php:87
+msgid ""
+"Apache is working, but its module \"headers\" is not enabled. Your admin "
+"should run command \"sudo a2enmod headers; sudo systemctl restart apache2\" "
+"to enable it."
+msgstr ""
+"Apache fonctionne, mais son module \"headers\" n’est pas activé. Votre admin "
+"doit lancer la commande \"sudo a2enmod headers; sudo systemctl restart "
+"apache2\" pour l’activer."
 
 #: src/Generic/AbstractModule.php:66
 #, php-format
@@ -60,15 +91,15 @@ msgstr ""
 "Le module \"%s\" a été automatiquement désactivé car ses dépendances ne sont "
 "plus disponibles."
 
-#: Module.php:41
+#: Module.php:55 Module.php:94
 msgid "Your site is already configured and let unchanged."
 msgstr "Votre site est déjà configuré et a été laissé inchangé."
 
-#: Module.php:42 Module.php:56
+#: Module.php:56 Module.php:95 Module.php:109
 msgid "The module can be uninstalled."
 msgstr "Le module peut être désinstallé."
 
-#: Module.php:55
+#: Module.php:108
 msgid ""
 "The privacy anti-theft header has been added successfully to your file \"."
 "htaccess\"."

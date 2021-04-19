@@ -17,20 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Module.php:25
+#: Module.php:40
+msgid "The module is unable to check if the current install is flock-secure."
+msgstr ""
+
+#: Module.php:41 Module.php:49 Module.php:64 Module.php:71 Module.php:81
+#: Module.php:88
+msgid "See module’s installation documentation."
+msgstr ""
+
+#: Module.php:48
+msgid "The module is not able to check if the current install is flock-secure."
+msgstr ""
+
+#: Module.php:63
 msgid ""
 "It seems this installation doesn’t use the web server Apache: there is no "
 "file \".htaccess\" at the root of Omeka."
 msgstr ""
 
-#: Module.php:26 Module.php:33
-msgid "See module’s installation documentation."
-msgstr ""
-
-#: Module.php:32
+#: Module.php:70
 msgid ""
 "The file \".htaccess\" at the root of Omeka is not writeable and cannot be "
 "updated by this module."
+msgstr ""
+
+#: Module.php:80
+msgid ""
+"It seems this installation doesn’t use the web server Apache: command "
+"\"apachectl\" is not available."
+msgstr ""
+
+#: Module.php:87
+msgid ""
+"Apache is working, but its module \"headers\" is not enabled. Your admin "
+"should run command \"sudo a2enmod headers; sudo systemctl restart apache2\" "
+"to enable it."
 msgstr ""
 
 #: src/Generic/AbstractModule.php:66
@@ -54,15 +76,15 @@ msgid ""
 "unavailable."
 msgstr ""
 
-#: Module.php:41
+#: Module.php:55 Module.php:94
 msgid "Your site is already configured and let unchanged."
 msgstr ""
 
-#: Module.php:42 Module.php:56
+#: Module.php:56 Module.php:95 Module.php:109
 msgid "The module can be uninstalled."
 msgstr ""
 
-#: Module.php:55
+#: Module.php:108
 msgid ""
 "The privacy anti-theft header has been added successfully to your file \"."
 "htaccess\"."
