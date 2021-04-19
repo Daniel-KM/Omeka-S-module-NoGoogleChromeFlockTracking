@@ -24,17 +24,26 @@ This module is useless if you can access to the config of your server or if you
 can add this in the Apache file ".htaccess" at the root of Omeka:
 
 ```.htaccess
-<IfModule mod_headers.c>
-    Header always set Permissions-Policy: interest-cohort=()
-</IfModule>
+Header always set Permissions-Policy: interest-cohort=()
 ```
 
-This module simply adds these lines automatically if not present. Once
-installed, the module can be removed. The check `<ifModule>` can be removed for
-micro-optimization if you are sure that the Apache module Headers is enabled.
-Of course, it is better to include it in the main config files of Apache. Nginx
-and other servers are currently not supported. You can find details of config
-for them [here].
+This module simply adds these lines automatically if not present, after some
+checks. Once installed, the module can be removed. Of course, it is better to
+include the line above in the main config files of Apache.
+
+Important: The Apache module "headers" must be enabled first:
+
+```sh
+sudo a2enmod headers
+sudo systemctl restart apache2
+```
+
+Nginx and other servers are currently not supported. You can find details of
+config for them [here].
+
+Note that header must be added to any response, not only to the Omeka ones: if
+the assets (images, js, css…) are not protected, Google will add (or maybe not)
+the site in the visitor profile anyway.
 
 
 Installation

@@ -18,7 +18,10 @@ class Module extends AbstractModule
 
     protected function preInstall(): void
     {
-        $t = $this->getServiceLocator()->get('MvcTranslator');
+        $services = $this->getServiceLocator();
+        $messenger = new Messenger();
+        $t = $services->get('MvcTranslator');
+
         $htaccess = OMEKA_PATH . '/.htaccess';
         if (!file_exists($htaccess) || !is_readable($htaccess)) {
             throw new ModuleCannotInstallException(
@@ -34,7 +37,22 @@ class Module extends AbstractModule
             );
         }
 
-        $messenger = new Messenger();
+        $cli = $this->getServiceLocator()->get('Omeka\Cli');
+        $command = 'apachectl -t -D DUMP_MODULES';
+        $output = $cli->execute($command);
+        if ($output === false) {
+            throw new ModuleCannotInstallException(
+                $t->translate('It seems this installation doesn’t use the web server Apache: command "apachectl" is not available.') // @translate
+                    . ' ' . $t->translate('See module’s installation documentation.') // @translate
+            );
+        }
+
+        if (!stripos($output, 'headers_module')) {
+            throw new ModuleCannotInstallException(
+                $t->translate('Apache is working, but its module "headers" is not enabled. Your admin should run command "sudo a2enmod headers; sudo systemctl restart apache2" to enable it.') // @translate
+                    . ' ' . $t->translate('See module’s installation documentation.') // @translate
+            );
+        }
 
         $content = file_get_contents($htaccess);
         if (stripos($content, 'Permissions-Policy') || stripos($content, 'interest-cohort')) {
