@@ -2,25 +2,38 @@
 
 namespace NoGoogleChromeFlockTracking;
 
-if (!class_exists(\Generic\AbstractModule::class)) {
-    require file_exists(dirname(__DIR__) . '/Generic/AbstractModule.php')
-        ? dirname(__DIR__) . '/Generic/AbstractModule.php'
-        : __DIR__ . '/src/Generic/AbstractModule.php';
-}
-
-use Generic\AbstractModule;
 use Laminas\Http\ClientStatic;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use Omeka\Module\AbstractModule;
 use Omeka\Module\Exception\ModuleCannotInstallException;
-use Omeka\Mvc\Controller\Plugin\Messenger;
 
+/**
+ * No Google Chrome Flock Tracking.
+ *
+ * @copyright Daniel Berthereau 2021-2023
+ * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
+ */
 class Module extends AbstractModule
 {
-    const NAMESPACE = __NAMESPACE__;
-
-    protected function preInstall(): void
+    public function getConfig()
     {
-        $services = $this->getServiceLocator();
-        $messenger = new Messenger();
+        return [
+            'translator' => [
+                'translation_file_patterns' => [
+                    [
+                        'type' => 'gettext',
+                        'base_dir' => __DIR__ . '/language',
+                        'pattern' => '%s.mo',
+                        'text_domain' => null,
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function install(ServiceLocatorInterface $services): void
+    {
+        $messenger = $services->get('ControllerPluginManager')->get('messenger');
         $t = $services->get('MvcTranslator');
 
         $viewHelpers = $services->get('ViewHelperManager');
@@ -31,6 +44,7 @@ class Module extends AbstractModule
             $response = ClientStatic::get($serverUrl($url));
         } catch (\Exception $e) {
         }
+
         // In some cases, the server cannot get its own url.
         if (empty($response)) {
             try {
@@ -42,6 +56,7 @@ class Module extends AbstractModule
                 );
             }
         }
+
         $headers = $response->getHeaders();
         if (empty($headers)) {
             throw new ModuleCannotInstallException(
@@ -72,7 +87,7 @@ class Module extends AbstractModule
             );
         }
 
-        $cli = $this->getServiceLocator()->get('Omeka\Cli');
+        $cli = $services->get('Omeka\Cli');
         $command = 'apachectl -t -D DUMP_MODULES';
         $output = $cli->execute($command);
         if ($output === false) {
