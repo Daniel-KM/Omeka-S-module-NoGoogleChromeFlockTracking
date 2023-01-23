@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-19 00:00+0000\n"
+"POT-Creation-Date: 2023-01-23 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,74 +17,53 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Module.php:40
+#: Module.php:54
 msgid "The module is unable to check if the current install is flock-secure."
 msgstr ""
 
-#: Module.php:41 Module.php:49 Module.php:64 Module.php:71 Module.php:81
-#: Module.php:88
+#: Module.php:55 Module.php:64 Module.php:79 Module.php:86 Module.php:96
+#: Module.php:103
 msgid "See module’s installation documentation."
 msgstr ""
 
-#: Module.php:48
+#: Module.php:63
 msgid "The module is not able to check if the current install is flock-secure."
 msgstr ""
 
-#: Module.php:63
+#: Module.php:78
 msgid ""
 "It seems this installation doesn’t use the web server Apache: there is no "
 "file \".htaccess\" at the root of Omeka."
 msgstr ""
 
-#: Module.php:70
+#: Module.php:85
 msgid ""
 "The file \".htaccess\" at the root of Omeka is not writeable and cannot be "
 "updated by this module."
 msgstr ""
 
-#: Module.php:80
+#: Module.php:95
 msgid ""
 "It seems this installation doesn’t use the web server Apache: command "
 "\"apachectl\" is not available."
 msgstr ""
 
-#: Module.php:87
+#: Module.php:102
 msgid ""
 "Apache is working, but its module \"headers\" is not enabled. Your admin "
 "should run command \"sudo a2enmod headers; sudo systemctl restart apache2\" "
 "to enable it."
 msgstr ""
 
-#: src/Generic/AbstractModule.php:66
-#, php-format
-msgid "This module requires the module \"%s\"."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:73
-#, php-format
-msgid "This module requires modules \"%s\"."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:80
-msgid "This module has resources that cannot be installed."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:707
-#, php-format
-msgid ""
-"The module \"%s\" was automatically deactivated because the dependencies are "
-"unavailable."
-msgstr ""
-
-#: Module.php:55 Module.php:94
+#: Module.php:70 Module.php:109
 msgid "Your site is already configured and let unchanged."
 msgstr ""
 
-#: Module.php:56 Module.php:95 Module.php:109
+#: Module.php:71 Module.php:110 Module.php:124
 msgid "The module can be uninstalled."
 msgstr ""
 
-#: Module.php:108
+#: Module.php:123
 msgid ""
 "The privacy anti-theft header has been added successfully to your file \"."
 "htaccess\"."
