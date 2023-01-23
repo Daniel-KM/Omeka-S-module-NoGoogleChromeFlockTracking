@@ -112,7 +112,7 @@ of the CeCILL license and that you accept its terms.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2021 (see [Daniel-KM] on GitLab)
+* Copyright Daniel Berthereau, 2021-2023 (see [Daniel-KM] on GitLab)
 
 
 [No Google Chrome Flock Tracking]: https://gitlab.com/Daniel-KM/Omeka-S-module-NoGoogleChromeFlockTracking
